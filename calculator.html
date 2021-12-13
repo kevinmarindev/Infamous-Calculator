@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="This is where your description goes">
+    	<meta name="keywords" content="Calculator">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Calculator</title>
+
+		<!-- external CSS link -->
+	<!-- <link rel="stylesheet" href="css/normalize.css" -->
+		<!-- <link rel="stylesheet" href="css/style.css"> -->
+	</head>
+	<style>
+		:root, html, body{
+			box-sizing: border-box;
+			margin: 0;
+			display: flex;
+  			align-items: center;
+  			justify-content: center;
+			color: white;
+			
+		}
+		
+		*, *:before, *:after {
+      		box-sizing: inherit;
+    	}
+
+		body{
+			background: url(./background2.jpg) ;
+			background-size: cover;
+		}
+
+		
+		div{
+			/* border: 1px black solid; */
+			/* text-align: left; */
+			font-size: 40px;
+			
+		}
+
+/* 
+		.centerIt{
+			width: 100vh;
+			height: 100vh;
+			display: flex;
+  			align-items: center;
+  			justify-content: center;
+			border: none;
+		} */
+		/* calculator frame */
+		.main{
+			width: 400px;
+			height: 600px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			/* border: 1px red solid; */
+			align-content: space-evenly;
+			margin-top: 50%;
+			margin-right: 50%;
+			margin-left: 50%;
+			background-color: rgb(34,34,34);
+			border-radius: 4%;
+			/* margin-top: 200px; */
+			box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.4);
+			
+		}
+		/* where numbers will be shown */
+		.display{
+			display: flex;
+			height: 25%;
+			width: 380px;
+			border-radius: 10%;
+			background-color: black;
+			color:rgba(0,165,183, 0.3);
+			flex-direction: row-reverse;
+			justify-content: flex-start;
+			flex-wrap: nowrap;
+			align-items: center;
+			padding-right: 5%;
+			padding-left: 5%;
+			word-break: break-all;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			
+			
+			
+		}
+
+		.row-one, .row-two, .row-three, .row-four, .last-row{
+			display: flex;
+			justify-content: center;
+			flex: 1 0 auto;
+			height: 50px;
+			width: 400px;
+			padding-right: 5%;
+			padding-left: 5%;
+			/* border: 1px blue solid; */
+			background-color: rgb(34,34,34);
+			
+		}
+
+		 .row-one > *, .last-row > *{
+			 display: flex;
+			justify-content: center;
+			 width: auto;
+			 flex: 1 0 auto;
+			 border-radius: 20%;
+			 background-color:rgb(24,21,17) ;
+			 margin-right: 1%;
+			 margin-left: 1%;
+			 transition: all 0.1s ease;
+			 box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+			
+		 }
+
+		 .row-two > *, .row-three > *, .row-four > *{
+			 display: flex;
+			 justify-content: center;
+			 flex: 1 0 auto;
+			 width: auto;
+			 background-color:rgb(24,21,17) ;
+			  border-radius: 20%;
+			margin-right: 1%;
+			 margin-left: 1%;
+			 transition: all 0.1s ease;
+			 box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+		 }
+
+		 .operator{
+			 flex: .75;
+			 background-color:rgb(0,113,175);
+		 }
+
+		 .equal{
+			 flex: .75;
+			 background-color:rgb(0,113,175);
+		 }
+
+		 
+		 .row-one > .divide{
+			 flex: .285;
+		 }
+
+		 .red{
+			 background-color:rgb(255,73,58);
+			 flex: .75;
+		 }
+
+		 .onn{
+			 color:rgba(0,165,183, 1);
+			 text-shadow: 0 0 12px rgb(0,165,183),
+			 			 0 0 10px rgb(0,165,183);
+		 }
+
+		 .buttonDown{
+			 transform: scale(0.85);
+		 }
+
+/* 
+Media queries  */
+		 /* @media screen and (max-width: 481px) {
+			 div{
+				 font-size: 35px;
+			 }
+			 .main{
+				width: 300px;
+				height: 450px;
+			 }
+			 .display{
+				 width: 285px;
+			 }
+			 .row-one, .row-two, .row-three, .row-four, .last-row{
+				 height: 37.5px;
+				 width: 300px;
+			 }
+		 } */
+
+		 @media screen and (max-width: 481px) {
+			 div{
+				 font-size: 35px;
+			 }
+			 .main{
+				width: 90vw;
+				height: 80vh;
+				margin-left: 5vw;
+				margin-right: 5vw;
+				margin-bottom: 10vh;
+				margin-top: 10vh;
+			 }
+			 .display{
+				 width: 90%;
+			 }
+			 .row-one, .row-two, .row-three, .row-four, .last-row{
+				 height: 37.5px;
+				 height: 8.5%;
+				 width: 90vw;
+			 }
+		 }
+
+	</style>
+
+	<body>
+		<!-- <div class='centerIt'> -->
+		<div class='main'>
+			<div class='display'>Double Click AC to turn On/Off</div>
+				<div class='row-one'>
+					<div class='clear red button'>AC</div>
+					<div class='back red button' style="font-size: 30px; align-items: center;">Back</div>
+					<div class='operator divide button'>/</div>
+				</div>
+				<div class='row-two'>
+					<div class='seven numbers button'>7</div>
+					<div class='eight numbers button'>8</div>
+					<div class='nine numbers button'>9</div>
+					<div class='operator multiply button'>x</div>
+				</div>
+				<div class='row-three'>
+					<div class='four numbers button'>4</div>
+					<div class='five numbers button'>5</div>
+					<div class='six numbers button'>6</div>
+					<div class='operator minus button'>-</div>
+				</div>
+				<div class='row-four'>
+					<div class='one numbers button'>1</div>
+					<div class='two numbers button'>2</div>
+					<div class='three numbers button'>3</div>
+					<div class='operator plus button'>+</div>
+				</div>
+				<div class='last-row'>
+					<div class='zero numbers decizero button'>0</div>
+					<div class='decimal numbers decizero button'>.</div>
+					<div class='equal button'>=</div>
+				</div>
+		</div>
+		<!-- </div> -->
+	</body>
+	<script>
+	//flag
+	let turnedOn = false;
+	let total = 100;
+	let total2 = '';
+	let numOne = '';
+	let operator = '';
+	let numTwo = '';
+	let operatorPressed = false;
+
+
+	// if(operator == false) console.log('it is false')
+
+	//selectors
+	let displayy = document.querySelector(".display");
+	let acButton = document.querySelector(".clear");
+	let backButton = document.querySelector('.back');
+	// console.log(displayy, acButton)
+
+	//functions
+	function turningOn(){
+		turnedOn = !turnedOn
+		console.log(turnedOn)
+
+		turnedOn == true ? displayy.classList.add('onn'): turnedOn == false ? displayy.classList.remove('onn') : null;
+
+		// turnedOn == true ? displayy.innerText = '0' && numOne = '0' : turnedOn == false ? displayy.innerText = "Double Click AC to Turn On/Off" : null;
+
+		if(turnedOn)  displayy.innerText = '0';
+		if(turnedOn == false) displayy.innerText = "Double Click AC to Turn On/Off";
+	}
+
+	function displayIt(item){
+		displayy.innerText = item;
+	}
+
+
+
+	function ChangeBacktoAC(e){
+		if(turnedOn) acButton.style.alignItems = 'center', acButton.style.fontSize = '27px', acButton.innerText = 'Clear'
+		else acButton.style.fontSize = '40px', acButton.innerText = "AC"
+	}
+
+	function clearIt(){
+		if(turnedOn) numOne = '', numTwo = '', operator = '', operatorPressed = false, displayIt('0');
+	}
+
+
+	function backOne(){
+		if(turnedOn && displayy.innerText.length > 1) {
+			if(operatorPressed == false){
+			numOne = displayy.innerText.substring(0, displayy.innerText.length - 1),
+			displayIt(displayy.innerText.substring(0, displayy.innerText.length - 1));
+			}
+			if(operatorPressed){
+			numTwo = displayy.innerText.substring(0, displayy.innerText.length - 1),
+			displayIt(displayy.innerText.substring(0, displayy.innerText.length - 1));	
+			}
+		}
+	}
+		
+	
+	function buttonDown(){
+		if(turnedOn) this.classList.add('buttonDown')
+	}
+
+	function removeButtonDown(e){
+		this.classList.remove('buttonDown');
+	}
+
+	function setUp(e){
+		if(turnedOn){
+			if(operatorPressed == false){
+				numOne += String(this.innerText);
+				if(numOne.length > 17 ) alert('Do you really need a number that long, Please press back'), numOne = numOne.substring(0,17), displayIt(numOne);
+
+				else	displayIt(numOne);
+			}
+			if(operatorPressed == true) {
+				numTwo += String(this.innerText);
+				if(numTwo.length > 17 ) alert('Do you really need a number that long, Please press back'), numTwo = numTwo.substring(0,17), displayIt(numTwo);
+				else	displayIt(numTwo);
+			}
+		}
+	}
+
+	function setOperator(){
+		if(turnedOn && numOne) operatorPressed = true, operator = this.innerText;
+		
+	}
+
+	function doOperation(){
+		if(operatorPressed && numTwo){
+			console.log(operator)
+		switch (operator) {
+			case '+':
+				total = Number(numOne) + Number(numTwo);
+				console.log(total)
+				total2 = String(total).substr(0,17)
+				numOne = total2, operatorPressed = false, numTwo = '', operatorPressed = false;
+				displayIt(total2);
+				break;
+			case '-':
+				total = Number(numOne) - Number(numTwo);
+				total2 = String(total).substr(0,17)
+				numOne = total2, operatorPressed = false, numTwo = '', operatorPressed = false;
+				displayIt(total2);
+				break;
+			case 'x':
+				total = Number(numOne) * Number(numTwo);
+				total2 = String(total).substr(0,17)
+				numOne = total2, operatorPressed = false, numTwo = '', operatorPressed = false;
+				displayIt(total2);
+				break;
+			case '/':
+				total = Number(numOne) / Number(numTwo)
+				total2 = String(total).substr(0,17)
+				numOne = total2, operatorPressed = false, numTwo = '', operatorPressed = false;
+				displayIt(total2);
+				break;
+			default:
+				displayIt('Error Press Clear')
+				break;
+		}
+		
+	}
+	}
+
+
+
+
+
+	//event listeners 
+
+	//calls calulator on method
+	acButton.addEventListener('dblclick', turningOn);
+	//calls button dowm effect
+	Array.from(document.querySelectorAll('.button')).forEach(button => button.addEventListener('mousedown', buttonDown));
+	//calls remove button down
+	Array.from(document.querySelectorAll('.button')).forEach(button => button.addEventListener('transitionend', removeButtonDown));
+	//turns ac into clear and back
+	acButton.addEventListener('dblclick', ChangeBacktoAC);
+	//clears callculator
+	acButton.addEventListener('click', clearIt)
+	//functionality
+	Array.from(document.querySelectorAll('.numbers')).forEach(button => button.addEventListener('click', setUp));
+	//deletes one character 
+	backButton.addEventListener('click', backOne)
+	//set the operator 
+	Array.from(document.querySelectorAll('.operator')).forEach(button => button.addEventListener('click', setOperator));
+	//do operation
+	document.querySelector('.equal').addEventListener('click', doOperation)
+	
+	</script>
+</html>
