@@ -13,4 +13,4 @@ This is a fully functional calculator inspired by the retro Toshiba calculators.
 
 ## Lessons Learned:
 
-This was my first full project. The calculator not only improved my design skills but also helped me fully grasp flexbox. On the programing side the project helped grasp the concept of encapsulation along with callbacks. 
+This was my first full project. The calculator not only improved my design skills but also helped me fully grasp flexbox and DOM manipulation. On the programing side, the project helped grasp the concept of encapsulation along with reinforcing the core javascripts concepts. 
